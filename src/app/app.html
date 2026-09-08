@@ -1,86 +1,50 @@
-
-<header class="header">
-  <h1>Panel de actividades</h1>
- <nav aria-labelledby="Principal">
+<header>
+  <p>Panel de actividades</p>
+  <nav>
     <ul>
-      <li><a href="#resumen">Resumen</a></li>
+      <li><a href="#contenido">Inicio</a></li>
       <li><a href="#actividades">Actividades</a></li>
-      
+      <li><a href="#nueva">Nueva actividad</a></li>
     </ul>
   </nav>
 </header>
 
-<main id="Contenido">
-  <section aria-labelledby="resumen-titulo">
-    <h2 id="resumen-titulo">Resumen</h2>
-    <ul>
-      <li><strong>Pendiente</strong></li>
-      <li><strong>En progreso</strong></li>
-    </ul>
-  </section>
+<main id="contenido">
+  <h1>Organiza tus actividades</h1>
+  <p>Revisa lo importante y prepara tu siguiente acción.</p>
 
-  <section aria-labelledby="actividades-titulo">
-    <h2 id="actividades-titulo">Actividades recientes</h2>
-    <article>
-      <h3>Preparar estructura HTML</h3>
-      <p>Definit las regiones de la página antes de darles estilo.</p>
-    </article>
-  </section>
-  <section aria-labelledby="filtros-titulo">
-    <h2 id="filtros-titulo">Buscar y Filtrar</h2>
-
-    <form>
-      <div>
-        <label for="buscar">Buscar actividad</label>
-        <input type="search" id="buscar" name="buscar">
-      </div>
-      <div>
-        <label for="estado">Estado</label>
-        <select id="estado" name="estado">
-          <option value="">Todos</option>
-          <option value="pendiente">Pendiente</option>
-          <option value="completada">Completada</option>
-       </select>
-      </div>
-    
-      <button type="submit">Filtrar</button>
-    </form>  
-    
-  </section>
-  
-    <article>
-      <h3>Revisar el informe trimestral</h3>
-      <p>Analizar los resultados y preparar las conclusiones.</p>
-    </article>
-  
-</main>
-<footer>
-  
-  <p>Panel de actividades - Curso de Angular</p>
-
-</footer>
-  <a href="#actividades">Actividades recientes</a>
   <h2>Resumen</h2>
   <ul>
-    <li><strong>Pendiente</strong></li>
-    <li><strong>En progreso</strong></li>
-    <li><strong>Completadas</strong></li>
+    <li>3 pendientes</li>
+    <li>1 en progreso</li>
+    <li>5 completadas</li>
   </ul>
 
-  <h2 id="actividades">Actividades recientes</h2>
+  <h2>Actividades</h2>
+  <ul>
+    <li>
+      <h3>Preparar estructura HTML</h3>
+      <p>Definir las regiones de la página antes de darles estilo.</p>
+      <p>Prioridad alta</p>
+    </li>
+    <li>
+      <h3>Revisar contraste</h3>
+      <p>Comprobar que el texto se lee sobre cada fondo.</p>
+      <p>Prioridad media</p>
+    </li>
+    <li>
+      <h3>Comprobar vista estrecha</h3>
+      <p>Recorrer la página a 320 píxeles sin desbordamiento.</p>
+      <p>Prioridad baja</p>
+    </li>
+  </ul>
 
-  <img src="imagenes/panel_ejemplo.svg" 
-  alt="Tablero con las columnas pendientes, en progreso y completadas" 
-  width="480" 
-  height="320" 
-  
-  />
+  <h2>Nueva actividad</h2>
+  <p>Los filtros y el guardado todavía no cambian nada: eso llega en el módulo 8.</p>
+</main>
 
-  <ol>
-    <li>Preparar estructura HTML</li>
-    <li>Revisar el informe trismestral</li>
-  </ol>
-  
-
+<footer>
+  <p>Práctica local de HTML y CSS.</p>
+</footer>
 
 <router-outlet />
