@@ -35,10 +35,26 @@
 
   <section id="actividades" aria-labelledby="titulo-actividades">
     <h2 id="titulo-actividades">Actividades</h2>
+    <form class="filtros">
+      <div class="campo">
+        <label for="buscar">Buscar</label>
+        <input type="search" id="buscar" name="buscar">
+      </div>
+      <div class="campo">
+        <label for="estado">Estado</label>
+        <select id="estado" name="estado">
+          <option value="todas">Todas</option>
+          <option value="pendiente">Pendientes</option>
+          <option value="en-progreso">En progreso</option>
+          <option value="completada">Completadas</option>
+        </select>
+      </div>
+      <button type="button" class="boton">Aplicar filtros</button>
+    </form>
     <ul class="lista">
       <li>
         <article class="tarjeta">
-          <h3>Preparar estructura HTML</h3>
+          <h3>Preparar Estructura HTML</h3>
           <p>Definir las regiones de la página antes de darles estilo.</p>
           <p class="prioridad prioridad-alta">Prioridad alta</p>
         </article>
@@ -57,12 +73,33 @@
           <p class="prioridad prioridad-baja">Prioridad baja</p>
         </article>
       </li>
+      <li>
+        <article class="tarjeta">
+          <h3>Revisar etiquetas semánticas</h3>
+          <p>Verificar que cada elemento tiene la etiqueta correcta.</p>
+          <p class="prioridad prioridad-media">Prioridad media</p>
+        </article>
     </ul>
   </section>
 
   <section id="nueva" aria-labelledby="titulo-nueva">
     <h2 id="titulo-nueva">Nueva actividad</h2>
     <p class="aviso">Los filtros y el guardado todavía no cambian nada: eso llega en el módulo 8.</p>
+     <form class="formulario">
+      <div class="campo">
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" name="titulo">
+      </div>
+      <div class="campo">
+        <label for="prioridad">Prioridad</label>
+        <select id="prioridad" name="prioridad">
+          <option value="alta">Alta</option>
+          <option value="media">Media</option>
+          <option value="baja">Baja</option>
+        </select>
+      </div>
+      <button type="button" class="boton">Guardar borrador</button>
+    </form>
   </section>
 </main>
 
