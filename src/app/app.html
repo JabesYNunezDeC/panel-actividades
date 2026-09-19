@@ -141,7 +141,15 @@
 <main id="contenido">
   <app-resumen-actividades />
   <app-lista-actividades />
-  
+
+
+
+ <button type="button" [disabled] ="estado === 'completada'">
+  Avanzar estado
+ </button>
+<!-- <button type="button" [disabled]="completada">Avanzar</button>
+<img [src]="rutaImagen" alt="Vista del panel">
+<p>Quedan {{ pendientes }} actividades</p> -->
 </main>
 
 <router-outlet />
