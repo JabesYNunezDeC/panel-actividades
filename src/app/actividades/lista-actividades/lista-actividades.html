@@ -1,1 +1,11 @@
-<p>lista-actividades works!</p>
+<ul class="actividades">
+  @for (actividad of actividades; track actividad.id) {
+    <li class="actividad">
+      <h3>{{ actividad.titulo | titlecase }}</h3>
+      <p>Prioridad: {{ actividad.prioridad | titlecase }}</p>
+      <p>Creada el {{ actividad.creadaEn | date: 'd MMM y' }}</p>
+    </li>
+  } @empty {
+    <li class="vacio">Todavía no hay actividades.</li>
+  }
+</ul>

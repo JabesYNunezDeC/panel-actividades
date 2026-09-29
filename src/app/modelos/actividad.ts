@@ -6,7 +6,8 @@ export interface Actividad {
     readonly id: number; 
     titulo: string; 
     estado: EstadoActividad;
-    prioridad: Prioridad;
+    prioridad?: Prioridad; // <-- The '?' makes it optional if not gives an error because It will make priority required
+    creadaEn: string;
 }
 
 export interface ResumenActividades {
