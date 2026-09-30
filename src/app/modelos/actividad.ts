@@ -1,18 +1,12 @@
-export type EstadoActividad = 'Pendiente' | 'En_Progreso' | 'Completada';
+export type EstadoActividad = 'pendiente' | 'en_progreso' | 'completada';
 
-export type Prioridad = 'Baja' | 'Media' | 'Alta';
+export type Prioridad = 'baja' | 'media' | 'alta';
 
 export interface Actividad {
     readonly id: number; 
     titulo: string; 
     estado: EstadoActividad;
     prioridad: Prioridad;
+    creadaEn: string; 
 }
 
-export interface ResumenActividades {
-    total: number;
-    pendientes: number;
-    completadas: number;
-    enProgreso: number;
-    tituloPrioridadAlta: string [];
-}
