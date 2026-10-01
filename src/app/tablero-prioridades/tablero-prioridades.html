@@ -1,0 +1,25 @@
+<section class="tablero" aria-labelledby="titulo-tablero">
+  <h2 id="titulo-tablero">Tablero de prioridades</h2>
+
+  <section aria-labelledby="titulo-actividades">
+    <h3 id="titulo-actividades">Actividades</h3>
+
+    <ul class="lista">
+      @for (actividad of actividades(); track actividad.id) {
+        <li>
+          <article class="tarjeta" [class.destacada]="actividad.destacada">
+            <h4>{{ actividad.titulo }}</h4>
+            <p class="prioridad prioridad-{{ actividad.prioridad }}">
+              Prioridad {{ actividad.prioridad }}
+            </p>
+            <p class="estado">{{ actividad.estado }}</p>
+          </article>
+        </li>
+      } @empty {
+        <li class="vacio">
+          <p>Todavía no hay actividades.</p>
+        </li>
+      }
+    </ul>
+  </section>
+</section>
