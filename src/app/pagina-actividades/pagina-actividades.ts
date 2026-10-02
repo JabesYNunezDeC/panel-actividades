@@ -2,11 +2,11 @@ import { Component, signal, computed, effect } from '@angular/core';
 import {Actividad, EstadoActividad, FiltroEstado, FiltroPrioridad, Prioridad} from '../modelos/actividad';
 @Component({
   imports: [],
-  selector: 'app-tablero-prioridades',
-  styleUrl: './tablero-prioridades.css',
-  templateUrl: './tablero-prioridades.html',
+  selector: 'app-pagina-actividades',
+  styleUrl: './pagina-actividades.css',
+  templateUrl: './pagina-actividades.html',
 })
-export class TableroPrioridades {
+export class PaginaActividades {
   protected readonly actividades = signal<Actividad[]>([
     { id: 1, titulo: 'Preparar estructura HTML', estado: 'completada', prioridad: 'alta', creadaEn: '2026-08-10', destacada: false },
     { id: 2, titulo: 'Revisar contraste', estado: 'en_progreso', prioridad: 'media', creadaEn: '2026-08-12', destacada: true},

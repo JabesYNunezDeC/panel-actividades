@@ -3,12 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { ResumenActividades } from './actividades/resumen-actividades/resumen-actividades';
 import { TargetaActividades } from './actividades/targeta-actividades/targeta-actividades';
 import { ListaActividades } from './actividades/lista-actividades/lista-actividades';
-import { TableroPrioridades } from './tablero-prioridades/tablero-prioridades';
+import { PaginaActividades } from './pagina-actividades/pagina-actividades';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ResumenActividades, TargetaActividades, ListaActividades, TableroPrioridades],
+  imports: [RouterOutlet, ResumenActividades, TargetaActividades, ListaActividades, PaginaActividades],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
