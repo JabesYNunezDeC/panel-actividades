@@ -24,20 +24,18 @@ export class PaginaActividades {
   protected readonly filtroEstado = signal<FiltroEstado>('todas');
   protected readonly filtroPrioridad = signal<FiltroPrioridad>('todas');
   protected readonly seleccionadaId = signal<number | null>(null);
-  protected readonly total = computed(() => this.actividades().length);
 
+
+  protected readonly total = computed(() => this.actividades().length);
   protected readonly pendientes = computed(
     () => this.actividades().filter((a) => a.estado === 'pendiente').length,
   );
-
   protected readonly enProgreso = computed(
     () => this.actividades().filter((a) => a.estado === 'en_progreso').length,
   );
-
   protected readonly completadas = computed(
     () => this.actividades().filter((a) => a.estado === 'completada').length,
   );
-
   protected readonly porcentaje = computed(() =>
     this.total() === 0 ? 0 : Math.round((this.completadas() / this.total()) * 100),
   );
@@ -70,6 +68,8 @@ export class PaginaActividades {
     protected readonly seleccionada = computed(
     () => this.actividades().find((a) => a.id === this.seleccionadaId()) ?? null,
   );
+
+  
   protected alternarDestacada(id: number): void {
     this.actividades.update((actuales) =>
       actuales.map((a) => (a.id === id ? { ...a, destacada: !a.destacada } : a)),
@@ -96,13 +96,13 @@ export class PaginaActividades {
     if (estado === 'en_progreso') return 'completada';
     return 'completada';
   }
-  protected buscar(evento: Event): void {
-    this.termino.set((evento.target as HTMLInputElement).value);
-  }
+  // protected buscar(evento: Event): void {
+  //   this.termino.set((evento.target as HTMLInputElement).value);
+  // }
 
-  protected cambiarFiltroEstado(evento: Event): void {
-    this.filtroEstado.set((evento.target as HTMLSelectElement).value as FiltroEstado);
-  }
+  // protected cambiarFiltroEstado(evento: Event): void {
+  //   this.filtroEstado.set((evento.target as HTMLSelectElement).value as FiltroEstado);
+  // }
 
   protected cambiarFiltroPrioridad(evento: Event): void {
     this.filtroPrioridad.set((evento.target as HTMLSelectElement).value as FiltroPrioridad);
