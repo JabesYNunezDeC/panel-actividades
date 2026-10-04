@@ -1,7 +1,11 @@
 import { Component, signal, computed, effect } from '@angular/core';
-import {Actividad, EstadoActividad, FiltroEstado, FiltroPrioridad, Prioridad} from '../modelos/actividad';
+import {Actividad, EstadoActividad, FiltroEstado, FiltroPrioridad, Prioridad} from '../../modelos/actividad';
+import { ResumenActividades } from '../resumen-actividades/resumen-actividades';
+import { ListaActividades } from '../lista-actividades/lista-actividades';
+import { PanelSeccion } from '../../compartido/panel-seccion/panel-seccion';
+import { FiltrosActividades } from '../filtros-actividades/filtros-actividades';
 @Component({
-  imports: [],
+ imports: [ResumenActividades, ListaActividades, PanelSeccion, FiltrosActividades],
   selector: 'app-pagina-actividades',
   styleUrl: './pagina-actividades.css',
   templateUrl: './pagina-actividades.html',

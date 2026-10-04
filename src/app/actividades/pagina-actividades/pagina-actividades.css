@@ -1,0 +1,15 @@
+.tablero { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.metricas,
+
+
+
+.controles { display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-end; }
+.campo { display: flex; flex-direction: column; gap: 0.25rem; }
+.campo input,
+.campo select { padding: 0.4rem; }
+
+.tarjeta,
+.metricas li,
+.campo { min-width: 0; }
+
