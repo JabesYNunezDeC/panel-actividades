@@ -1,16 +1,11 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { PaginaActividades } from './actividades/pagina-actividades/pagina-actividades';
-import { PaginaEstadisticas } from './estadisticas/pagina-estadisticas/pagina-estadisticas';
+import { Component} from '@angular/core';
+import { RouterOutlet,RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,PaginaActividades,PaginaEstadisticas],
+  imports: [RouterOutlet,RouterLink],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
-  protected readonly title = signal('panel-actividades');
-
-}
+export class App {}
