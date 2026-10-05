@@ -9,6 +9,9 @@
         (avanceSolicitado)="avanceSolicitado.emit($event)"
         (eliminacionSolicitada)="eliminacionSolicitada.emit($event)" />
     </li>
+      <a class="enlace-detalle" [routerLink]="['/actividades', actividad.id]">
+        Ver detalle de {{ actividad.titulo }}
+      </a>
   } @empty {
     <li class="vacio">
       <p>{{ mensajeVacio() }}</p>

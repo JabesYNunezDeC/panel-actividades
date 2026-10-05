@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ServicioActividades } from '../../servicio-actividades/servicio-actividades';
+import { ServicioActividades } from '../../actividades/servicio-actividades/servicio-actividades';
 
 @Component({
   imports: [],

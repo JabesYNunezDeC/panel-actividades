@@ -1,6 +1,6 @@
 import { Component, signal, computed, inject, effect } from '@angular/core';
-import {ServicioActividades} from '../../servicio-actividades/servicio-actividades';
-import {Actividad, EstadoActividad, FiltroEstado, FiltroPrioridad, Prioridad} from '../../modelos/actividad';
+import {ServicioActividades} from '../servicio-actividades/servicio-actividades';
+import {FiltroEstado, FiltroPrioridad, Prioridad} from '../../modelos/actividad';
 import { ResumenActividades } from '../resumen-actividades/resumen-actividades';
 import { ListaActividades } from '../lista-actividades/lista-actividades';
 import { PanelSeccion } from '../../compartido/panel-seccion/panel-seccion';
