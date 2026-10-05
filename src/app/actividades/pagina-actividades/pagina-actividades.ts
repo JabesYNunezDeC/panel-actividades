@@ -1,4 +1,5 @@
-import { Component, signal, computed, effect } from '@angular/core';
+import { Component, signal, computed, inject, effect } from '@angular/core';
+import {ServicioActividades} from '../../servicio-actividades/servicio-actividades';
 import {Actividad, EstadoActividad, FiltroEstado, FiltroPrioridad, Prioridad} from '../../modelos/actividad';
 import { ResumenActividades } from '../resumen-actividades/resumen-actividades';
 import { ListaActividades } from '../lista-actividades/lista-actividades';
@@ -11,34 +12,23 @@ import { FiltrosActividades } from '../filtros-actividades/filtros-actividades';
   templateUrl: './pagina-actividades.html',
 })
 export class PaginaActividades {
-  protected readonly actividades = signal<Actividad[]>([
-    { id: 1, titulo: 'Preparar estructura HTML', estado: 'completada', prioridad: 'alta', creadaEn: '2026-08-10', destacada: false },
-    { id: 2, titulo: 'Revisar contraste', estado: 'en_progreso', prioridad: 'media', creadaEn: '2026-08-12', destacada: true},
-    { id: 3, titulo: 'Practicar TypeScript', estado: 'pendiente', prioridad: 'alta', creadaEn: '2026-08-14', destacada: false },
-    { id: 4, titulo: 'Copia Practicar TypeScript', estado: 'pendiente', prioridad: 'alta', creadaEn: '2026-09-14', destacada: false },
-    { id: 5, titulo: 'Crear TypeScript', estado: 'pendiente', prioridad: 'baja', creadaEn: '2026-09-15', destacada: false },
-  ]);
-
+  private readonly servicio = inject(ServicioActividades);
+  protected readonly actividades = this.servicio.actividades;
+ 
   private readonly orden: Record<Prioridad, number> = { alta: 0, media: 1, baja: 2 };
   protected readonly termino = signal('');
   protected readonly filtroEstado = signal<FiltroEstado>('todas');
   protected readonly filtroPrioridad = signal<FiltroPrioridad>('todas');
   protected readonly seleccionadaId = signal<number | null>(null);
+  
+  protected readonly aviso = this.servicio.aviso;
+  protected readonly sinGuardar = this.servicio.sinGuardar;
+  protected readonly total = this.servicio.total;
+  protected readonly pendientes = this.servicio.pendientes;
+  protected readonly enProgreso = this.servicio.enProgreso;
+  protected readonly completadas = this.servicio.completadas;
+  protected readonly porcentaje = this.servicio.porcentaje;
 
-
-  protected readonly total = computed(() => this.actividades().length);
-  protected readonly pendientes = computed(
-    () => this.actividades().filter((a) => a.estado === 'pendiente').length,
-  );
-  protected readonly enProgreso = computed(
-    () => this.actividades().filter((a) => a.estado === 'en_progreso').length,
-  );
-  protected readonly completadas = computed(
-    () => this.actividades().filter((a) => a.estado === 'completada').length,
-  );
-  protected readonly porcentaje = computed(() =>
-    this.total() === 0 ? 0 : Math.round((this.completadas() / this.total()) * 100),
-  );
   protected readonly visibles = computed(() => {
     const termino = this.termino().trim().toLocaleLowerCase('es');
     const estado = this.filtroEstado();
@@ -69,32 +59,26 @@ export class PaginaActividades {
     () => this.actividades().find((a) => a.id === this.seleccionadaId()) ?? null,
   );
 
-  
-  protected alternarDestacada(id: number): void {
-    this.actividades.update((actuales) =>
-      actuales.map((a) => (a.id === id ? { ...a, destacada: !a.destacada } : a)),
-    );
-  }
-
-  protected avanzarEstado(id: number): void {
-    this.actividades.update((actuales) =>
-      actuales.map((a) => (a.id === id ? { ...a, estado: this.siguienteEstado(a.estado) } : a)),
-    );
-  }
-
   protected seleccionar(id: number): void {
     this.seleccionadaId.update((actual) => (actual === id ? null : id));
   }
+  protected alternarDestacada(id: number): void {
+    this.servicio.alternarDestacada(id);
+  }
+
+  protected avanzarEstado(id: number): void {
+    this.servicio.avanzarEstado(id);
+  }
 
   protected eliminar(id: number): void {
-    this.actividades.update((actuales) => actuales.filter((a) => a.id !== id));
+    this.servicio.eliminar(id);
     this.seleccionadaId.update((actual) => (actual === id ? null : actual));
   }
 
-  private siguienteEstado(estado: EstadoActividad): EstadoActividad {
-    if (estado === 'pendiente') return 'en_progreso';
-    if (estado === 'en_progreso') return 'completada';
-    return 'completada';
+  protected restablecer(): void {
+    this.servicio.vaciar();
+    this.limpiarFiltros();
+    this.seleccionadaId.set(null);
   }
   // protected buscar(evento: Event): void {
   //   this.termino.set((evento.target as HTMLInputElement).value);
@@ -120,9 +104,5 @@ export class PaginaActividades {
     });
   }
 
-  protected restablecer(): void {
-    this.actividades.set([]);
-    this.limpiarFiltros();
-    this.seleccionadaId.set(null);
-  }
+  
 }
